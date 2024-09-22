@@ -1,5 +1,6 @@
 export const API_URL = "https://volta-rpc.energyweb.org";
-export const contractAddress = "0x662Fe7042121E00d402bD96D583d474F08947e2b";
+// export const contractAddress = "0xe5688fc42BF2d84e9ceBfFB251B01Ed97297029a";
+export const contractAddress = "0x5FD6eB55D12E759a21C09eF703fe0CBa1DC9d88D";
 export const userProfileABI = [
   {
     inputs: [
@@ -19,83 +20,68 @@ export const userProfileABI = [
         type: "string",
       },
     ],
+    name: "createProfile",
+    outputs: [],
     stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    inputs: [],
-    name: "email",
-    outputs: [
-      {
-        internalType: "string",
-        name: "",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
-    name: "fullname",
-    outputs: [
+    inputs: [
       {
-        internalType: "string",
-        name: "",
-        type: "string",
+        internalType: "address",
+        name: "userAddress",
+        type: "address",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
     name: "getUserProfile",
     outputs: [
       {
         internalType: "string",
-        name: "",
+        name: "_fullname",
         type: "string",
       },
       {
         internalType: "string",
-        name: "",
+        name: "_email",
         type: "string",
       },
       {
         internalType: "string",
-        name: "",
+        name: "_role",
         type: "string",
-      },
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
       },
     ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [],
-    name: "owner",
-    outputs: [
+    inputs: [
       {
         internalType: "address",
         name: "",
         type: "address",
       },
     ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "role",
+    name: "userProfiles",
     outputs: [
       {
         internalType: "string",
-        name: "",
+        name: "fullname",
+        type: "string",
+      },
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "email",
+        type: "string",
+      },
+      {
+        internalType: "string",
+        name: "role",
         type: "string",
       },
     ],

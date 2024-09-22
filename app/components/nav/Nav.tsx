@@ -1,49 +1,48 @@
-import {
-  userProfileABI,
-  contractAddress,
-} from "@/constant/userProfileContract";
+// import {
+//   userProfileABI,
+//   contractAddress,
+// } from "@/constant/userProfileContract";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useAccount, useWalletClient } from "wagmi";
-import { Web3 } from "web3";
+import { useWalletClient } from "wagmi";
 
 const Nav = () => {
   const { isSuccess } = useWalletClient();
-  const { address } = useAccount();
+  // const { address } = useAccount();
   const router = useRouter();
 
-  const getUserProfile = async () => {
-    try {
-      if (!address) {
-        return;
-      }
-      const provider = new ethers.BrowserProvider(window.ethereum);
-      const signer = await provider.getSigner();
-      console.log(signer);
-      const contract = new ethers.Contract(
-        contractAddress,
-        userProfileABI,
-        signer
-      );
+  // const getUserProfile = async () => {
+  //   try {
+  //     if (!address) {
+  //       return;
+  //     }
+  //     const provider = new ethers.BrowserProvider(window.ethereum);
+  //     const signer = await provider.getSigner();
+  //     console.log(signer);
+  //     const contract = new ethers.Contract(
+  //       contractAddress,
+  //       userProfileABI,
+  //       signer
+  //     );
 
-      const data = await contract.getUserProfile();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     const data = await contract.getUserProfile(signer.address);
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <div>
       {/* Top black nav bar */}
       <div className="bg-black text-white text-sm py-2 flex justify-center items-center gap-10">
         <div>
-          <p>(123) 456-7890</p>
+          <p>(+266) 5778-7890</p>
         </div>
         <div>
-          <p>email@domain.com</p>
+          <p>info@locallinkafrica.co.ls</p>
         </div>
         <div className="flex gap-4">
           <a href="#" className="hover:text-gray-400">
@@ -65,7 +64,7 @@ const Nav = () => {
       <div className="bg-white py-5">
         <div className="w-[90%] m-auto flex justify-between items-center">
           <div className="logo">
-            <h1 className="text-2xl font-bold">LinkLocalAfrica</h1>
+            <h1 className="text-2xl font-bold">LocalLinkAfrica</h1>
           </div>
 
           <nav>
@@ -83,23 +82,7 @@ const Nav = () => {
                 <a href="#">Get in Touch</a>
               </li>
               {/* Add some space before Login and Sign Up */}
-              <div className="flex gap-[10px] ml-[40px]">
-                <li>
-                  <ConnectButton showBalance={false} />
-                </li>
-                {/* <li>{status}</li> */}
-                {isSuccess && (
-                  <button
-                    onClick={async () => {
-                      await getUserProfile();
-                      // router.push("/dashboard");
-                    }}
-                    className="bg-stone-700 text-white px-1 rounded-lg"
-                  >
-                    Get Started
-                  </button>
-                )}
-
+              <div className="flex gap-[10px] ml-[40px] items-center">
                 {/* <li>
                   <a
                     href="#"
@@ -107,7 +90,7 @@ const Nav = () => {
                   >
                     Login
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <a
                     href="#"
@@ -115,7 +98,22 @@ const Nav = () => {
                   >
                     Sign Up
                   </a>
-                </li> */}
+                </li>
+                <li>
+                  <ConnectButton showBalance={false} label="Connect" />
+                </li>
+                {/* <li>{status}</li> */}
+                {isSuccess && (
+                  <button
+                    onClick={async () => {
+                      // await getUserProfile();
+                      router.push("/dashboard");
+                    }}
+                    className="bg-stone-700 text-white px-2 py-1 rounded-lg"
+                  >
+                    Get Started
+                  </button>
+                )}
               </div>
             </ul>
           </nav>
